@@ -1,0 +1,6 @@
+.block-grid {
+  display: inline-grid;
+  grid-template-columns: 36px 36px 36px;
+  background-color: white;
+  padding: 4px;
+}
