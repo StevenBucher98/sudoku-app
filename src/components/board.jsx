@@ -29,12 +29,12 @@ function createBoard() {
   let soln = [];
   for (let i = 0; i < 9; i++) soln[i] = cells[i].slice();
 
-  console.log("Cells before:", soln);
+  //console.log("Cells before:", soln);
   removeKValues(30, cells);
-  console.log("Cells after: ", cells);
+  //console.log("Cells after: ", cells);
 
   let new_cells = blockize(cells);
-  console.log("New cell: ", new_cells);
+  //console.log("New cell: ", new_cells);
 
   let cells_objs = [[], [], [], [], [], [], [], [], []];
   for (let i = 0; i < 9; i++) {
