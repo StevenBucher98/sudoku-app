@@ -4,4 +4,4 @@
 
 A very simple game for myself to learn how to use ReactJS. Works just as Sudoku and once you win a header will appear.
 
-![Winning Screen]('/public/wonScreenshot.png')
+![Winning Screen]('https://github.com/StevenBucher98/sudoku-app/blob/master/public/wonScreenshot.png')
