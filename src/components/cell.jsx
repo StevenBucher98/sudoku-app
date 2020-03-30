@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./cell.css";
+import PropTypes from "prop-types";
+
 class Cell extends Component {
   state = {
     value: this.props.value.val,
@@ -12,16 +14,22 @@ class Cell extends Component {
   handleChange = event => {
     let x = parseInt(event.target.value);
     this.setState({ value: x });
-    if (x === this.state.soln || this.state.value === NaN) {
+    if (x === this.state.soln) {
+      this.setState({ filled: true });
       this.setState({ style: "cell-css" });
-    } else {
+      this.props.fill();
+    }
+    // else if (this.state.value === NaN) {
+    //   this.setState({ style: "cell-css" });
+    // }
+    else {
       this.setState({ style: "wrong" });
     }
   };
 
   render() {
-    console.log("Cell props: ", this.props);
-    console.log("Cell State:", this.state);
+    //console.log("Cell props: ", this.props);
+    //console.log("Cell State:", this.state);
     return (
       <div>
         {this.state.filled ? (
@@ -44,5 +52,9 @@ class Cell extends Component {
     );
   }
 }
+
+Cell.propTypes = {
+  fill: PropTypes.func
+};
 
 export default Cell;

@@ -9,6 +9,8 @@ const cell = {
   soln: 0
 };
 
+const K = 5;
+
 function createBoard() {
   let cells = Array(9)
     .fill()
@@ -30,7 +32,7 @@ function createBoard() {
   for (let i = 0; i < 9; i++) soln[i] = cells[i].slice();
 
   //console.log("Cells before:", soln);
-  removeKValues(30, cells);
+  removeKValues(K, cells);
   //console.log("Cells after: ", cells);
 
   let new_cells = blockize(cells);
@@ -129,13 +131,25 @@ function blockize(arr) {
 class Board extends Component {
   state = {
     currentValue: 0,
-    numberfilled: 0
+    numberfilled: 0,
+    win: false
   };
 
   constructor(props) {
     super(props);
     this.state.cells = createBoard();
+    this.state.numberfilled = 81 - K;
   }
+
+  updatedFilled = () => {
+    let numberfilled = this.state.numberfilled;
+    numberfilled++;
+    if (numberfilled >= 81) {
+      this.setState({ win: true });
+    }
+    this.setState({ numberfilled });
+    console.log("THIS RAN");
+  };
 
   render() {
     console.log("state: ", this.state);
@@ -143,9 +157,14 @@ class Board extends Component {
       <div>
         <center>
           <h1>Sudoku!</h1>
+          {this.state.win ? <h1>You Won!</h1> : ""}
           <div className="grid-container">
             {this.state.cells.map(blocks => (
-              <Block key={this.state.cells.indexOf(blocks)} cells={blocks} />
+              <Block
+                key={this.state.cells.indexOf(blocks)}
+                cells={blocks}
+                updatedFilled={this.updatedFilled}
+              />
             ))}
           </div>
         </center>
