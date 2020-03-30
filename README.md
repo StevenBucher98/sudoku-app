@@ -1,4 +1,4 @@
-#Sudoku Game!
+### Sudoku Game!
 
 ## Simple Sudoku game
 
