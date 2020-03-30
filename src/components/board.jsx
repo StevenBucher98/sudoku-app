@@ -9,7 +9,7 @@ const cell = {
   soln: 0
 };
 
-const K = 5;
+const K = 30;
 
 function createBoard() {
   let cells = Array(9)
